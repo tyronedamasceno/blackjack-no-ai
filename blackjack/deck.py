@@ -46,9 +46,6 @@ class FrenchDeck:
     def __len__(self):
         return len(self._cards)
 
-    def __getitem__(self, position):
-        return self._cards[position]
-
 
 class Shoe:
     def __init__(self, shoesize: int = 6):
