@@ -1,0 +1,45 @@
+[project]
+name = "blackjack"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Tyrone Damasceno",email = "tyroneedamasceno@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12,<4.0"
+dependencies = [
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pytest-cov = "^6.1.1"
+ruff = "^0.11.10"
+pytest = "^8.3.5"
+taskipy = "^1.14.1"
+
+[tool.ruff]
+line-length = 79
+
+[tool.ruff.lint]
+preview = true
+select = ['I', 'F', 'E', 'W', 'PL', 'PT']
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'
+
+[tool.pytest.ini_options]
+pythonpath = "."
+addopts = '-p no:warnings'
+
+[tool.taskipy.tasks]
+lint = 'ruff check'
+pre_format = 'ruff check --fix'
+format = 'ruff format'
+pre_test = 'task lint'
+test = 'pytest -s -x --cov=fast_zero -vv'
+post_test = 'coverage html'
