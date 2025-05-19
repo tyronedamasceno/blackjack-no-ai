@@ -24,10 +24,10 @@ class Card:
     @property
     def value(self):
         if self.rank.isdigit():
-            return int(self.rank), None
+            return int(self.rank)
 
         if self.rank in 'JQK':
-            return 10, None
+            return 10
 
         return 1, 11
 

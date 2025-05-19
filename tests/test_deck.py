@@ -21,11 +21,11 @@ def test_card_equality_checks_rank_and_suit():
 @pytest.mark.parametrize(
     ('rank', 'expected'),
     [
-        ('2', (2, None)),
-        ('9', (9, None)),
-        ('10', (10, None)),
-        ('J', (10, None)),
-        ('K', (10, None)),
+        ('2', 2),
+        ('9', 9),
+        ('10', 10),
+        ('J', 10),
+        ('K', 10),
         ('A', (1, 11)),
     ],
 )
