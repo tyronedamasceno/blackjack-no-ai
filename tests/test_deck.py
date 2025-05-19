@@ -18,14 +18,17 @@ def test_card_equality_checks_rank_and_suit():
     assert Card('2', 'spades') != Card('3', 'spades')
 
 
-@pytest.mark.parametrize(("rank", "expected"), [
-    ('2', (2, None)),
-    ('9', (9, None)),
-    ('10', (10, None)),
-    ('J', (10, None)),
-    ('K', (10, None)),
-    ('A', (1, 11)),
-])
+@pytest.mark.parametrize(
+    ('rank', 'expected'),
+    [
+        ('2', (2, None)),
+        ('9', (9, None)),
+        ('10', (10, None)),
+        ('J', (10, None)),
+        ('K', (10, None)),
+        ('A', (1, 11)),
+    ],
+)
 def test_card_values(rank, expected):
     assert Card(rank, 'spades').value == expected
 

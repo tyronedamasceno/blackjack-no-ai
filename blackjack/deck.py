@@ -10,7 +10,7 @@ class Card:
         self.suit = suit
 
     def __repr__(self):
-        return f"Card(rank={self.rank}, suit={self.suit})"
+        return f'Card(rank={self.rank}, suit={self.suit})'
 
     def __eq__(self, other):
         if not isinstance(other, Card):
@@ -38,9 +38,7 @@ class FrenchDeck:
 
     def __init__(self):
         self._cards = [
-            Card(rank, suit)
-            for suit in self.suits
-            for rank in self.ranks
+            Card(rank, suit) for suit in self.suits for rank in self.ranks
         ]
 
     def __len__(self):
@@ -52,7 +50,7 @@ class Shoe:
         self._cards = reduce(
             lambda _c, deck: _c + deck._cards,
             (FrenchDeck() for _ in range(shoesize)),
-            []
+            [],
         )
         shuffle(self._cards)
 
