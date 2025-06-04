@@ -1,3 +1,4 @@
+from constants import DEALER_HIT_CONSTRAINT
 from deck import Shoe
 from game import Dealer, Player
 
@@ -28,11 +29,11 @@ while True:
 
     if player.hand.is_blackjack:
         if dealer.hand.is_blackjack:
-            print('You and dealer have blackjack, it\'s a push!')
+            print("You and dealer have blackjack, it's a push!")
             player.balance += bet
             continue
         print(f'You have blackjack! You win {bet + bet * 1.5}')
-        player.balance += (bet + bet * 1.5)  # blackjack pays 3/2
+        player.balance += bet + bet * 1.5  # blackjack pays 3/2
         continue
     if dealer.hand.is_blackjack:
         print('Dealer has blackjack, you lost. Better luck next time')
@@ -46,7 +47,8 @@ while True:
             Hit: H
             Double down: D
             Stand: S
-        Your action:""")
+        Your action:"""
+        )
         if action == 'H':
             player.hand.add_card(shoe.draw())
             print('Your hand:')
@@ -64,19 +66,19 @@ while True:
         print('You busted! Better luck next time')
         continue
 
-    print('Dealer\'s hand')
+    print("Dealer's hand")
     dealer.hand.show()
     # Dealer must hit while has < 17, this rules can vary at each casino
-    while dealer.hand.value < 17:
+    while dealer.hand.value < DEALER_HIT_CONSTRAINT:
         dealer.hand.add_card(shoe.draw())
         print('Dealer hits:')
         dealer.hand.show()
 
     if dealer.hand.is_busted or player.hand.value > dealer.hand.value:
         print(f'You win {bet + bet}')
-        player.balance += (bet + bet)
+        player.balance += bet + bet
     elif player.hand.value == dealer.hand.value:
-        print('It\'s a push!')
+        print("It's a push!")
         player.balance += bet
     elif player.hand.value < dealer.hand.value:
         print('You lost. Better luck next time')

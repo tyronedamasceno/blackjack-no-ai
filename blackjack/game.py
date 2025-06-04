@@ -1,5 +1,9 @@
-from blackjack.constants import MAX_HAND_VALUE
-from blackjack.deck import Card
+from constants import (
+    BLACKJACK_NUMBER_OF_CARDS,
+    BLACKJACK_VALUE,
+    MAX_HAND_VALUE,
+)
+from deck import Card
 
 
 class Hand:
@@ -10,7 +14,8 @@ class Hand:
         self._cards.append(new_card)
 
     def show(self, hide_first=False):
-        for card in self._cards[1 if hide_first else 0:]:
+        start = 1 if hide_first else 0
+        for card in self._cards[start:]:
             print(card)
 
         if not hide_first:
@@ -29,7 +34,10 @@ class Hand:
 
     @property
     def is_blackjack(self) -> bool:
-        return len(self._cards) == 2 and self.value == 21
+        return (
+            len(self._cards) == BLACKJACK_NUMBER_OF_CARDS
+            and self.value == BLACKJACK_VALUE
+        )
 
     @property
     def is_busted(self) -> bool:
