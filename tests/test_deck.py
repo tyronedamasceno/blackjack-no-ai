@@ -26,7 +26,7 @@ def test_card_equality_checks_rank_and_suit():
         ('10', 10),
         ('J', 10),
         ('K', 10),
-        ('A', (1, 11)),
+        ('A', 11),
     ],
 )
 def test_card_values(rank, expected):
