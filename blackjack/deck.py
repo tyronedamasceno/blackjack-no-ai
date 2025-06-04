@@ -29,7 +29,8 @@ class Card:
         if self.rank in 'JQK':
             return 10
 
-        return 1, 11
+        # TODO: this case is an ACE, it may have 2 values, 1 and 11
+        return 11
 
 
 class FrenchDeck:
