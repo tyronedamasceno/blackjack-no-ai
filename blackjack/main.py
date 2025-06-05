@@ -22,9 +22,9 @@ while True:
     player.hand.add_card(shoe.draw())
     dealer.hand.add_card(shoe.draw())
 
-    print('Your hand:')
+    print('\nYour hand:')
     player.hand.show()
-    print("Dealer's hand:")
+    print("\nDealer's hand:")
     dealer.hand.show(hide_first=True)
 
     if player.hand.is_blackjack:
@@ -47,7 +47,7 @@ while True:
             Hit: H
             Double down: D
             Stand: S
-        Your action:"""
+        Your action: """
         )
         if action == 'H':
             player.hand.add_card(shoe.draw())
