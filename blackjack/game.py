@@ -1,9 +1,10 @@
-from constants import (
+from blackjack.constants import (
     BLACKJACK_NUMBER_OF_CARDS,
     BLACKJACK_VALUE,
+    DEFAULT_INITIAL_BALANCE,
     MAX_HAND_VALUE,
 )
-from deck import Card
+from blackjack.deck import Card
 
 
 class Hand:
@@ -13,7 +14,8 @@ class Hand:
     def add_card(self, new_card: Card):
         self._cards.append(new_card)
 
-    def show(self, hide_first=False):
+    def show(self, hide_first=False):  # pragma: no cover
+        # TODO: improve this, and test
         start = 1 if hide_first else 0
         for card in self._cards[start:]:
             print(card)
@@ -45,7 +47,7 @@ class Hand:
 
 
 class Player:
-    def __init__(self, balance: float = 100):
+    def __init__(self, balance: float = DEFAULT_INITIAL_BALANCE):
         self.hand: Hand = Hand()
         self.balance = balance
 
